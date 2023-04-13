@@ -9,6 +9,13 @@
         <div class="py-12">
             <div class="max-w-md mx-auto sm:px-6 lg:px-8 bg-white">
                 <form class="p-4" @submit.prevent="submit">
+
+                    <div>
+                        <select v-model="form.skill_id">
+                            <option v-for="skill in skills" :key="skill.id" :value="skill.id">{{ skill.name }}</option>
+                        </select>
+                    </div>
+
                     <div  class="mt-3">
                         <InputLabel for="name" value="Name" />
 
@@ -38,6 +45,19 @@
 
                         <InputError class="mt-2" :message="form.errors.url" />
                     </div>
+
+                    <div class="mt-3">
+                        <InputLabel for="image" value="Image" />
+
+                        <TextInput
+                            id="image"
+                            type="file"
+                            class="mt-1 block w-full"
+                            @input="form.image = $event.target.files[0]"
+                        />
+
+                        <InputError class="mt-2" :message="form.errors.image" />
+                    </div>
            
                     <div class="flex items-center justify-end mt-4">
                         <PrimaryButton class="ml-4" :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
@@ -58,9 +78,16 @@
     import PrimaryButton from '@/Components/PrimaryButton.vue';
     import TextInput from '@/Components/TextInput.vue';
 
+    defineProps({
+        skills: Array
+    });
+
     const form = useForm({
         name: '',
         url: '',
+        skill_id: '',
+        image: '',
+
     });
 
     const submit = () => {
