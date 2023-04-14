@@ -24,7 +24,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $skills = Skills::all();
+        $skills = Skill::all();
         return Inertia::render('Projects/Create', compact('skills'));
     }
 

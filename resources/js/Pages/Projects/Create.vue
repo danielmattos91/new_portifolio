@@ -11,7 +11,7 @@
                 <form class="p-4" @submit.prevent="submit">
 
                     <div>
-                        <select v-model="form.skill_id">
+                        <select v-model="form.skill_id" id="skill_id" name="skill_id" class="mt-1 block w-full pl-3 pr-10 py-2 text-base border-gray-300 focus-outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm rounded-md">
                             <option v-for="skill in skills" :key="skill.id" :value="skill.id">{{ skill.name }}</option>
                         </select>
                     </div>
