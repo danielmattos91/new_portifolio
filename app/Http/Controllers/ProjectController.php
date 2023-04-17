@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use App\Http\Controllers\Controller;
+
 
 class ProjectController extends Controller
 {
@@ -24,8 +26,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        $skills = Skill::all();
-        return Inertia::render('Projects/Create', compact('skills'));
+        
+        return Inertia::render('Projects/Create');
     }
 
     /**
