@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\SkillResource;
+use App\Models\Skill;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Storage;
 use Inertia\Inertia;
 use App\Http\Controllers\Controller;
 
@@ -26,8 +30,8 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        
-        return Inertia::render('Projects/Create');
+        $skills = Skill::all();
+        return Inertia::render('Projects/Create', compact('skills'));
     }
 
     /**
